@@ -2,7 +2,7 @@
 
 import express from "express";
 import mongoose from "mongoose";
-import scheduledTask from "./scheduledTask"
+//import scheduleTask from "./scheduleTask"
 
 const app = express();
 const port = 8080;
@@ -15,7 +15,7 @@ mongoose
     app.listen(8080);
     console.log("listening....");
     // schedule the task to run every day at 12:00 AM
-    task.scheduleTask();
+    //task.scheduleTask();
   });
   
 

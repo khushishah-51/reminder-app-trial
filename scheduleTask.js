@@ -18,7 +18,7 @@ cron.schedule("0 0 * * *", async () => {
       tasksToUpdate.map(async (task) => {
         task.dueDate = today;
         await task.save();
-        task.scheduleTask();
+        
       })
     );
 
