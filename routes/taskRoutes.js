@@ -1,3 +1,4 @@
+/*
 // Task Routes (routes/taskRoutes.js)
 
 const express = require("express");
@@ -9,38 +10,23 @@ router.get("/tasks/today", taskController.getTasksForToday);
 router.get("/tasks/scheduled", taskController.getScheduledTasks);
 router.put("/tasks/:id", taskController.updateTask);
 
-module.exports = router;
+//module.exports = router;
+export default router;
+*/
 
-// Task Model (models/Task.js)
+// Task Routes (routes/taskRoutes.js)
 
-const mongoose = require("mongoose");
+import express from "express";
+import * as taskController from "../controller/taskController.js";
 
-const taskSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  description: String,
-  dueDate: { type: Date, required: true },
-  isCompleted: { type: Boolean, default: false },
-});
+const router = express.Router();
 
-module.exports = mongoose.model("Task", taskSchema);
+router.post("/tasks", taskController.createTask);
+router.get("/tasks/today", taskController.getTasksForToday);
+router.get("/tasks/scheduled", taskController.getScheduledTasks);
+router.put("/tasks/:id", taskController.updateTask);
 
-// App Setup (app.js)
+export default router;
 
-const express = require("express");
-const mongoose = require("mongoose");
 
-const app = express();
-const port = 8080;
 
-mongoose
-  .connect(
-    "mongodb+srv://dbUser:dbUSERPASSWORD@cluster0.qkgmjl5.mongodb.net/?retryWrites=true&w=majority"
-  )
-  .then(() => app.listen(8080))
-  .then(() => console.log("listening...."));
-
-scheduledTasks.start();
-
-app.get("/", (req, res) => {
-  res.send("Hi khushi!");
-});
