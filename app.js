@@ -36,14 +36,28 @@ app.get("/", (req, res) => {
 
 import express from "express";
 import mongoose from "mongoose";
+import path from 'path';
 import taskRoutes from "./routes/taskRoutes.js";
+import exphbs from 'express-handlebars';
 //import { scheduleTask } from "./scheduleTask.js";
 
 const app = express();
 const port = 8080;
 
+// Set up Handlebars middleware
+const __dirname = path.resolve();
+app.engine('hbs', exphbs.engine({
+  extname: '.hbs'
+}));
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+
 app.use(express.json());
 app.use(taskRoutes);
+
+//const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, 'views'))); 
+
 
 mongoose
   .connect(
@@ -59,5 +73,5 @@ mongoose
   });
 
 app.get("/", (req, res) => {
-  res.send("Hi khushi!");
+  res.render('index', { title: 'Home', tasks: [] });
 });

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="todo__wrapper">
+    <div class="todo__content">
+        <h1>TODO</h1>
+        <form class="newItem">
+            <div class="newItem__input">
+                <input type="text" name="add" placeholder="Add item...">
+                <i id="plus" class="fas fa-plus"></i>
+            </div>
+            <div class="newItem__select">
+                <select class="filter">
+                    <option value="all">ALL</option>
+                    <option value="undo">Undo</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+        </form>
+        <ul class="todo__list">
+            {{#each tasks}}
+            <li class="todo__item">
+                <input type="checkbox" id="{{this._id}}" {{#if this.isCompleted}}checked{{/if}} onchange="handleCheck('{{this._id}}')">
+                <label for="{{this._id}}">
+                    <span class="check__box">
+                        {{#if this.isCompleted}}
+                        <i class="fas fa-check check__pointer"></i>
+                        {{else}}
+                        <i class="far fa-check check__pointer"></i>
+                        {{/if}}
+                    </span>
+                    <span class="item__title">{{this.title}}</span>
+                </label>
+                <i class="fas fa-trash-alt item__trash-can"></i>
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
