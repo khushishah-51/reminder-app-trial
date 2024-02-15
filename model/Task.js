@@ -18,7 +18,7 @@ import mongoose from "mongoose";
 
 const taskSchema = new mongoose.Schema({
   title: { type: String, required: true },
-  description: String,
+  description: { String },
   dueDate: { type: Date, required: true },
   isCompleted: { type: Boolean, default: false },
 });

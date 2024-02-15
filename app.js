@@ -73,5 +73,26 @@ mongoose
   });
 
 app.get("/", (req, res) => {
-  res.render('index', { title: 'Home', tasks: [] });
+  res.render('layouts/main', { title: 'Home', tasks: [] });
 });
+
+app.get("/tasks/today", async (req, res) => {
+  try {
+    const tasks = await taskController.getTasksForToday(req, res);
+    res.render('layouts/main', { title: 'Home', tasks });
+  } catch (error) {
+    console.error('Error fetching tasks:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.get("/tasks/scheduled", async (req, res) => {
+  try {
+    const tasks = await taskController.getScheduledTasks(req, res);
+    res.render('layouts/main', { title: 'Home', tasks });
+  } catch (error) {
+    console.error('Error fetching tasks:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
