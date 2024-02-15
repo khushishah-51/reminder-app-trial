@@ -51,7 +51,8 @@ export async function getTasksForToday(req, res) {
     res.status(500).json({ message: "Internal server error" });
   }
 }
-
+ 
+/*
 export async function getScheduledTasks() {
   try {
       const today = new Date();
@@ -65,6 +66,19 @@ export async function getScheduledTasks() {
       throw error;
   }
 }
+*/
+
+export async function getScheduledTasks() {
+  try {
+    const today = new Date();
+    const tasks = await Task.find({ dueDate: { $gte: today } });
+    return tasks;
+  } catch (error) {
+    console.error("Error fetching scheduled tasks:", error);
+    throw error;
+  }
+}
+
 
 export async function updateTask(req, res) {
   try {
