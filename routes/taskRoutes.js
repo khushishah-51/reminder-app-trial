@@ -28,11 +28,10 @@ const router = express.Router();
 router.get("/", (req, res) => {
     res.render('layouts/main', { title: 'Home', tasks : []});
   });
-  /*
+  
   router.post("/tasks", async (req, res) => {
     try {
         const { title, description, dueDate } = req.body;
-        const task = new Task({ title, description, dueDate });
         const task = await taskController.createTask(req, res);
         res.render('layouts/main', { title: 'Home', tasks: [task] });
     } catch (error) {
@@ -40,18 +39,8 @@ router.get("/", (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-*/
 
-router.post("/tasks", async (req, res) => {
-    try {
-        const { title, description, dueDate } = req.body;
-        const task = await taskController.createTask({ title, description, dueDate });
-        res.render('layouts/main', { title: 'Home', tasks: [task] });
-    } catch (error) {
-        console.error('Error creating task:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
+
 
 
   router.get("/tasks/today", async (req, res) => {
