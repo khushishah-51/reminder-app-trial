@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,14 +31,15 @@
             <li class="todo__item">
                 <input type="checkbox" id="{{this._id}}" {{#if this.isCompleted}}checked{{/if}} onchange="handleCheck('{{this._id}}')">
                 <label for="{{this._id}}">
-                    <span class="check__box">
-                        {{#if this.isCompleted}}
-                        <i class="fas fa-check check__pointer"></i>
-                        {{else}}
-                        <i class="far fa-check check__pointer"></i>
-                        {{/if}}
-                    </span>
-                    <span class="item__title">{{this.title}}</span>
+                <span class="check__box">
+                    {{#if this.isCompleted}}
+                    <i class="fas fa-check check__pointer"></i>
+                    {{else}}
+                    <i class="far fa-check check__pointer"></i>
+                    {{/if}}
+                </span>
+                <span class="item__title">{{this.title}}</span> <!-- Ensure this line is correct -->
+                <span class="item__description">{{this.description}}</span> <!-- Add this line if description is required -->
                 </label>
                 <i class="fas fa-trash-alt item__trash-can"></i>
             </li>
@@ -48,3 +50,4 @@
 
 </body>
 </html>
+          
