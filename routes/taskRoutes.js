@@ -60,9 +60,6 @@ router.get("/tasks/scheduled", async (req, res) => {
     }
   });
   
-
-  
-
   router.put("/tasks/:id", async (req, res) => {
     try {
         const { id } = req.params;

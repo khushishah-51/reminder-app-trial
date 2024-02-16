@@ -33,7 +33,6 @@ app.use(express.static(path.join(__dirname, 'views')));
 mongoose
   .connect(
     "mongodb+srv://khushis:6xyxW1my4dZa01tZ@cluster0.mbkrxjk.mongodb.net/?retryWrites=true&w=majority"
-    
   )
   .then(() => {
     app.listen(port, () => {

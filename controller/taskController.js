@@ -43,10 +43,6 @@ export async function getTasksForToday(req, res) {
   }
 }
  
-
-
-
-
 export async function updateTask(req, res) {
   try {
     const { id } = req.params;
@@ -68,4 +64,3 @@ export async function updateTask(req, res) {
     res.status(500).json({ message: "Internal server error" });
   }
 }
-
