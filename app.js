@@ -27,7 +27,9 @@ app.use(express.static(path.join(__dirname, 'views')));
 
 mongoose
   .connect(
-    "mongodb+srv://khushifshah0102:cey4PouJ2cgNkgLr@cluster0.tipj1a4.mongodb.net/?retryWrites=true&w=majority"
+    "mongodb+srv://khushis:6xyxW1my4dZa01tZ@cluster0.mbkrxjk.mongodb.net/?retryWrites=true&w=majority"
+    
+
   )
   .then(() => {
     app.listen(port, () => {
@@ -64,3 +66,8 @@ app.get("/tasks/scheduled", async (req, res) => {
 });
 */
 
+//6xyxW1my4dZa01tZ
+//khushis
+
+//personal account
+//"mongodb+srv://khushifshah0102:cey4PouJ2cgNkgLr@cluster0.tipj1a4.mongodb.net/?retryWrites=true&w=majority"

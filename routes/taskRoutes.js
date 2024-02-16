@@ -29,19 +29,17 @@ router.get("/", (req, res) => {
     res.render('layouts/main', { title: 'Home', tasks : []});
   });
   
+  
   router.post("/tasks", async (req, res) => {
     try {
-        const { title, description, dueDate } = req.body;
-        const task = await taskController.createTask(req, res);
-        res.render('layouts/main', { title: 'Home', tasks: [task] });
+        const tasks = await taskController.createTask(req, res);
+        //res.render('layouts/main', { title: 'Home', tasks });
+        res.json(tasks);
     } catch (error) {
         console.error('Error creating task:', error);
         res.status(500).send('Internal Server Error');
     }
 });
-
-
-
 
   router.get("/tasks/today", async (req, res) => {
     try {

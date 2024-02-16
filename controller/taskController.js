@@ -31,7 +31,11 @@ import Task from "../model/Task.js";
 export async function createTask(req, res) {
   try {
     const { title, description, dueDate } = req.body;
-    const task = new Task({ title, description, dueDate });
+    const task = new Task({
+      title: title,
+      description: description,
+      dueDate: dueDate
+  });
     await task.save();
     res.status(201).json(task);
   } catch (error) {
