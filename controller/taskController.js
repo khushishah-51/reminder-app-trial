@@ -1,31 +1,5 @@
 // Task Controller (controllers/taskController.js)
 
-/*
-export async function getScheduledTasks(req, res) {
-  try {
-    const today = new Date();
-    const tasks = await Task.find({ dueDate: { $gte: today } });
-    res.status(200).json(tasks);
-  } catch (error) {
-    console.error("Error fetching scheduled tasks:", error);
-    res.status(500).json({ message: "Internal server error" });
-  }
-}
-*/
-
-//new code
-/*export async function getScheduledTasks() {
-  try {
-    const today = new Date();
-    const tasks = await Task.find({ dueDate: { $gte: today } });
-    return tasks;
-  } catch (error) {
-    console.error("Error fetching scheduled tasks:", error);
-    throw error;
-  }
-}
-*/
-
 import Task from "../model/Task.js";
 
 export async function createTask(req, res) {
@@ -44,6 +18,18 @@ export async function createTask(req, res) {
   }
 }
 
+export async function getScheduledTasks() {
+  try {
+    const today = new Date();
+    const task = await Task.find({ dueDate: { $gte: today } });
+    return task;
+  } catch (error) {
+    console.error("Error fetching scheduled tasks:", error);
+    throw error;
+  }
+}
+
+
 export async function getTasksForToday(req, res) {
   try {
     const today = new Date();
@@ -52,36 +38,13 @@ export async function getTasksForToday(req, res) {
     res.status(200).json(tasks);
   } catch (error) {
     console.error("Error fetching tasks for today:", error);
-    res.status(500).json({ message: "Internal server error" });
+    throw error;
+    
   }
 }
  
-/*
-export async function getScheduledTasks() {
-  try {
-      const today = new Date();
-      const tasks = await Task.find({ dueDate: { $gte: today } });
-      return tasks.reduce((acc, curr) => {
-          acc[curr._id] = curr; // Assuming _id is unique and used as the key
-          return acc;
-      }, {});
-  } catch (error) {
-      console.error("Error fetching scheduled tasks:", error);
-      throw error;
-  }
-}
-*/
 
-export async function getScheduledTasks() {
-  try {
-    const today = new Date();
-    const tasks = await Task.find({ dueDate: { $gte: today } });
-    return tasks;
-  } catch (error) {
-    console.error("Error fetching scheduled tasks:", error);
-    throw error;
-  }
-}
+
 
 
 export async function updateTask(req, res) {

@@ -177,6 +177,9 @@ body {
 .todo__item > input[type="checkbox"]:checked + label .item__title {
 	color: #c7c7c7;
 }
+.todo__item > input[type="checkbox"]:checked + label .item__description {
+	color: #c7c7c7;
+}
 
 @keyframes pulse {
 	0% {

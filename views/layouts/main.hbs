@@ -12,7 +12,7 @@
 
 <div class="todo__wrapper">
     <div class="todo__content">
-        <h1>TODO</h1>
+        <h1>Reminder</h1>
         <form class="newItem">
             <div class="newItem__input">
                 <input type="text" name="add" placeholder="Add item...">
@@ -29,17 +29,18 @@
         <ul class="todo__list">
             {{#each tasks}}
             <li class="todo__item">
-                <input type="checkbox" id="{{this._id}}" {{#if this.isCompleted}}checked{{/if}} onchange="handleCheck('{{this._id}}')">
-                <label for="{{this._id}}">
+                <input type="checkbox" id="{{_id}}" {{#if isCompleted}}checked{{/if}} onchange="handleCheck('{{_id}}')">
+                <label for="{{_id}}">
                 <span class="check__box">
-                    {{#if this.isCompleted}}
+                    {{#if isCompleted}}
                     <i class="fas fa-check check__pointer"></i>
                     {{else}}
                     <i class="far fa-check check__pointer"></i>
                     {{/if}}
                 </span>
-                <span class="item__title">{{this.title}}</span> <!-- Ensure this line is correct -->
-                <span class="item__description">{{this.description}}</span> <!-- Add this line if description is required -->
+                <span class="item__title">{{title}}</span> 
+                <span class="item__description">{{description}}</span>
+                <span class="item__description">{{dueDate}}</span> 
                 </label>
                 <i class="fas fa-trash-alt item__trash-can"></i>
             </li>
@@ -50,4 +51,3 @@
 
 </body>
 </html>
-          
