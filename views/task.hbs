@@ -21,13 +21,7 @@
                 </button>   
                 </a>                  
             </div>
-            <div class="newItem__select">
-                <select class="filter">
-                    <option value="all">ALL</option>
-                    <option value="undo">Undo</option>
-                    <option value="completed">Completed</option>
-                </select>
-            </div>
+
         </form>
         <ul class="todo__list">
             {{#each tasks}}
@@ -45,6 +39,14 @@
                 <span class="item__description">{{description}}</span>
                 <span class="item__description">{{dueDate}}</span> 
                 </label>
+                    <div class="item__buttons">
+                        <button type="button" class="edit__button" onclick="handleEdit('{{_id}}')">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button type="button" class="delete__button" onclick="handleDelete('{{_id}}')">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>                
                 <i class="fas fa-trash-alt item__trash-can"></i>
             </li>
             {{/each}}
