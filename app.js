@@ -11,11 +11,6 @@ import Handlebars from 'handlebars';
 const app = express();
 const port = 8080;
 
-// Define a helper to safely access properties
-//Handlebars.registerHelper('safeAccess', function(obj, prop, defaultValue) {
-//  return obj && obj[prop] !== undefined ? obj[prop] : defaultValue;
-//});
-
 // Set up Handlebars middleware
 const __dirname = path.resolve();
 const hbs = exphbs.create({
@@ -25,10 +20,6 @@ const hbs = exphbs.create({
     allowProtoMethodsByDefault: true,
   })
 });
-
-
-
-
 
 app.engine('hbs', hbs.engine); 
 

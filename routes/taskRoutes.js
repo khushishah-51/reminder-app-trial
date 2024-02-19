@@ -5,8 +5,6 @@ import * as taskController from "../controller/taskController.js";
 
 const router = express.Router();
 
-  
-
   router.post("/tasks", async (req, res) => {
     try {
         const tasks = await taskController.createTask(req, res);
@@ -15,6 +13,16 @@ const router = express.Router();
         console.error('Error creating task:', error);
         res.status(500).send('Internal Server Error');
     }
+});
+/*
+router.get("/tasks", (req, res) => {
+  res.render('pages/index');
+});
+*/
+
+
+router.get("/tasks", (req, res) => {
+  res.render('index');
 });
 
 router.get("/", async (req, res) => {
@@ -30,14 +38,13 @@ router.get("/", async (req, res) => {
       };
     });
     console.log("Fetched tasks:", tasks); 
-    res.render('layouts/main', { title: 'Home', tasks: formattedTasks });
+    res.render('task', { title: 'Home', tasks: formattedTasks });
   } catch (error) {
     console.error('Error fetching tasks:', error);
     res.status(500).send('Internal Server Error');
   }
 });
 
- 
   router.put("/tasks/:id", async (req, res) => {
     try {
         const { id } = req.params;
@@ -52,7 +59,6 @@ router.get("/", async (req, res) => {
     }
 });
 
-
 router.delete("/tasks/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -66,7 +72,6 @@ router.delete("/tasks/:id", async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
-
 
 router.get("/tasks/today", async (req, res) => {
   try {
@@ -87,7 +92,6 @@ router.get("/tasks/today", async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
-
 
 export default router;
 
