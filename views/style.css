@@ -18,6 +18,23 @@ body {
 	background: radial-gradient(circle, rgba(145,200,255,1) 0%, rgba(55,150,245,1) 100%); 
 }
 
+.item__title,
+.item__description,
+.item__dueDate {
+    display: block;
+}
+
+.item__title {
+    font-weight: bold;
+	font-size: 20px;
+}
+
+.item__description {
+    font-weight: 300; 
+}
+
+
+
 .todo__wrapper {
 	margin: 0 auto;
 	padding: 20px 0;

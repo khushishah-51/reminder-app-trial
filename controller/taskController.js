@@ -28,6 +28,39 @@ export async function getScheduledTasks() {
     throw error;
   }
 }
+ 
+export async function updateTask(id, req, res) {
+  try {
+    //const { id } = req.params;
+    const { title, description, dueDate } = req.body;
+
+    const updatedTask = await Task.findOneAndUpdate(
+      { _id: id },
+      { title, description, dueDate },
+      { new: true }
+    );
+
+    if (!updatedTask) {
+      return null;
+    }
+
+    return updatedTask;
+  } catch (error) {
+    console.error("Error updating task:", error);
+    throw error;
+  }
+}
+
+
+export async function deleteTask(id) {
+  try {
+    const deletedTask = await Task.findOneAndDelete({ _id: id });
+    return deletedTask;
+  } catch (error) {
+    console.error("Error deleting task:", error);
+    throw error;
+  }
+}
 
 
 export async function getTasksForToday(req, res) {
@@ -40,27 +73,5 @@ export async function getTasksForToday(req, res) {
     console.error("Error fetching tasks for today:", error);
     throw error;
     
-  }
-}
- 
-export async function updateTask(req, res) {
-  try {
-    const { id } = req.params;
-    const { title, description, dueDate } = req.body;
-
-    const updatedTask = await Task.findOneAndUpdate(
-      { _id: id },
-      { title, description, dueDate },
-      { new: true }
-    );
-
-    if (!updatedTask) {
-      return res.status(404).json({ message: "Task not found" });
-    }
-
-    res.status(200).json(updatedTask);
-  } catch (error) {
-    console.error("Error updating task:", error);
-    res.status(500).json({ message: "Internal server error" });
   }
 }
