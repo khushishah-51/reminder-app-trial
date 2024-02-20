@@ -40,11 +40,13 @@
                 <span class="item__description">{{dueDate}}</span> 
                 </label>
                     <div class="item__buttons">
+                        <a href="/tasks/{{_id}}">
                         <button type="button" class="edit__button" onclick="handleEdit('{{_id}}')">
-                            <i class="fas fa-edit"></i>
+                            <i class="fas fa-edit"></i>Edit
                         </button>
+                        </a>
                         <button type="button" class="delete__button" onclick="handleDelete('{{_id}}')">
-                            <i class="fas fa-trash-alt"></i>
+                            <i class="fas fa-trash-alt"></i>Delete
                         </button>
                     </div>                
                 <i class="fas fa-trash-alt item__trash-can"></i>

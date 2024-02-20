@@ -5,6 +5,9 @@ import Task from "../model/Task.js";
 export async function createTask(req, res) {
   try {
     const { title, description, dueDate } = req.body;
+    if (!title || !description || !dueDate) {
+      return res.status(400).json({ message: "Title, description, and due date are required" });
+    }
     const task = new Task({
       title: title,
       description: description,

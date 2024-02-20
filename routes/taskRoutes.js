@@ -25,6 +25,9 @@ router.get("/tasks", (req, res) => {
   res.render('index');
 });
 
+router.get("/tasks/:id", (req, res) => {
+  res.render('edit');
+});
 router.get("/", async (req, res) => {
   try {
     const tasks = await taskController.getScheduledTasks();

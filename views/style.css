@@ -34,9 +34,6 @@ body {
 }
 
 
-
-
-
 .todo__wrapper {
 	margin: 0 auto;
 	padding: 20px 0;
@@ -60,12 +57,14 @@ body {
 .newItem__input {
 	display: flex;
 	align-items: center;
+	font-size: 20px
+
 }
 .newItem__input input[name="add"] {
 	outline: none;
 	border: none;
 	border-bottom: 1px solid transparent;
-	padding: 10px;
+	padding: 50px;
 	transition: all 0.3s;
 	font-size: 18px;
 	flex: 1;
@@ -125,6 +124,11 @@ body {
 }
 .newItem__select:hover::after {
 	color: #4ca1f7;
+}
+.edit__button,
+.delete__button {
+    font-size: 20px; /* Adjust the font size as needed */
+    padding: 10px 20px; /* Adjust the padding as needed */
 }
 
 .todo__list {
