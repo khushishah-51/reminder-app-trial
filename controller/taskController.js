@@ -65,15 +65,4 @@ export async function deleteTask(id) {
   }
 }
 
-export async function getTasksForToday(req, res) {
-  try {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const tasks = await Task.find({ dueDate: today });
-    res.status(200).json(tasks);
-  } catch (error) {
-    console.error("Error fetching tasks for today:", error);
-    throw error;
-    
-  }
-}
+

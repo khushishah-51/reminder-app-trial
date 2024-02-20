@@ -1,19 +1,68 @@
+<!--
 <link rel="stylesheet" href="/style2.css">
 <div class="login-box">
     <h2>Edit Task</h2>
-    <form method="put" action="/tasks/{{_id}}">
+    <form method="PUT" action="/tasks/{{_id}}">
       <div class="user-box">
-        <input type="text" name="" required="">
+        <input type="text" name="title" required="">
         <label>Title</label>
       </div>
       <div class="user-box">
-        <input type="text" name="" required="">
+        <input type="text" name="description" required="">
         <label>Description</label>
        </div>
         <div class="user-box">
-        <input type="text" name="" required="">
+        <input type="text" name="date" required="">
         <label>Date</label>
       </div>
       <input type="submit" value="Submit">
     </form>
   </div>
+  -->
+
+ <link rel="stylesheet" href="/style2.css">
+<div class="login-box">
+    <h2>Edit Task</h2>
+    <form id="editTaskForm" method="POST" action="/tasks/{{_id}}">
+      <div class="user-box">
+        <input type="text" name="title" required="">
+        <label>Title</label>
+      </div>
+      <div class="user-box">
+        <input type="text" name="description" required="">
+        <label>Description</label>
+       </div>
+        <div class="user-box">
+        <input type="text" name="date" required="">
+        <label>Date</label>
+      </div>
+      <input type="submit" value="Submit">
+    </form>
+</div>
+
+<script>
+document.getElementById("editTaskForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    var formData = new FormData(this); // Get form data
+
+    fetch('/tasks/' + _id, {
+        method: 'PUT',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        // If response is ok, redirect or handle success accordingly
+        // For example, you could redirect the user to another page
+        window.location.href = '/tasks'; // Redirect to tasks page
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Handle error accordingly, such as showing an error message to the user
+        alert('Error updating task. Please try again.');
+    });
+});
+</script>
+

@@ -5,8 +5,6 @@ import * as taskController from "../controller/taskController.js";
 
 const router = express.Router();
 
-
-  
   router.post("/tasks", async (req, res) => {
     try {
         console.log(req.body.title);
@@ -17,8 +15,6 @@ const router = express.Router();
         res.status(500).send('Internal Server Error');
     }
 });
-
-
 
 router.get("/tasks", (req, res) => {
   res.render('index');
@@ -62,7 +58,7 @@ router.get("/tasks/:id", (req, res) => {
   res.render('edit');
 });
 
-router.delete("/tasks/:id", async (req, res) => {
+router.delete("/task/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const deletedTask = await taskController.deleteTask(id);
