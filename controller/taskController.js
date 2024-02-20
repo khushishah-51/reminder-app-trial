@@ -54,7 +54,6 @@ export async function updateTask(id, req, res) {
   }
 }
 
-
 export async function deleteTask(id) {
   try {
     const deletedTask = await Task.findOneAndDelete({ _id: id });
@@ -64,7 +63,6 @@ export async function deleteTask(id) {
     throw error;
   }
 }
-
 
 export async function getTasksForToday(req, res) {
   try {

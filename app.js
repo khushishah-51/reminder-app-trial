@@ -6,7 +6,6 @@ import path from 'path';
 import taskRoutes from "./routes/taskRoutes.js";
 import exphbs from 'express-handlebars';
 import Handlebars from 'handlebars';
-//import { scheduleTask } from "./scheduleTask.js";
 
 const app = express();
 const port = 8080;
@@ -40,8 +39,6 @@ mongoose
       console.log("Server is running on port " + port);
     });
     console.log("listening....");
-    // schedule the task to run every day at 12:00 AM
-    //scheduleTask();
   });
 
 //6xyxW1my4dZa01tZ

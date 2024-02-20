@@ -14,20 +14,11 @@ const router = express.Router();
         res.status(500).send('Internal Server Error');
     }
 });
-/*
-router.get("/tasks", (req, res) => {
-  res.render('pages/index');
-});
-*/
-
 
 router.get("/tasks", (req, res) => {
   res.render('index');
 });
 
-router.get("/tasks/:id", (req, res) => {
-  res.render('edit');
-});
 router.get("/", async (req, res) => {
   try {
     const tasks = await taskController.getScheduledTasks();
@@ -62,6 +53,10 @@ router.get("/", async (req, res) => {
     }
 });
 
+router.get("/tasks/:id", (req, res) => {
+  res.render('edit');
+});
+
 router.delete("/tasks/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -72,26 +67,6 @@ router.delete("/tasks/:id", async (req, res) => {
     res.status(204).send();
   } catch (error) {
     console.error('Error deleting task:', error);
-    res.status(500).send('Internal Server Error');
-  }
-});
-
-router.get("/tasks/today", async (req, res) => {
-  try {
-    const tasks = await taskController.getTasksForToday(req, res);
-    const formattedTasks = tasks.map(task => {
-      return {
-        _id: task._id.toString(), // Convert ObjectID to string
-        title: task.title,
-        description: task.description,
-        dueDate: task.dueDate,
-        isCompleted: task.isCompleted
-      };
-    });
-    console.log("Fetched tasks:", tasks); 
-    res.render('layouts/main', { title: 'Home', tasks: formattedTasks });
-  } catch (error) {
-    console.error('Error fetching tasks:', error);
     res.status(500).send('Internal Server Error');
   }
 });
