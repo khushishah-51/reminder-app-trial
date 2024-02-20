@@ -4,11 +4,12 @@ import Task from "../model/Task.js";
 
 export async function createTask(req, res) {
   try {
+    console.log("body",req.body)
     const { title, description, dueDate } = req.body;
     if (!title || !description || !dueDate) {
       return res.status(400).json({ message: "Title, description, and due date are required" });
     }
-    const task = new Task({
+    const task = await new Task({
       title: title,
       description: description,
       dueDate: dueDate
