@@ -20,6 +20,7 @@ const hbs = exphbs.create({
     allowProtoMethodsByDefault: true,
   })
 });
+//app.use(express.urlencoded( { extended : false} ) );
 
 app.engine('hbs', hbs.engine); 
 
@@ -28,8 +29,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded( { extended : false} ) );
 
 app.use(express.json());
-app.use(taskRoutes);
 app.use(express.static(path.join(__dirname, 'views'))); 
+
+app.use(taskRoutes);
+//app.use(express.static(path.join(__dirname, 'views'))); 
 
 mongoose
   .connect(
